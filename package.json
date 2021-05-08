@@ -24,5 +24,7 @@
         "vue-loader": "^15.9.6",
         "vue-template-compiler": "^2.6.12"
     },
-    "dependencies": {}
+    "dependencies": {
+        "vue-chat-scroll": "^2.0.0-alpha.4"
+    }
 }
