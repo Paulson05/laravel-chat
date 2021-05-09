@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Providers\App\Listerners;
+namespace App\Listeners;
 
-use App\Providers\App\Events\ChatEvent;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
@@ -21,7 +20,7 @@ class ChatListerner
     /**
      * Handle the event.
      *
-     * @param  ChatEvent  $event
+     * @param  object  $event
      * @return void
      */
     public function handle(ChatEvent $event)

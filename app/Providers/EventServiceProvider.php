@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Providers\App\Events\ChatEvent;
+use App\Providers\App\Listerners\ChatListerner;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -15,8 +17,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-            App\Events\ChatEvent::class => [
-            App\Listerners\ChatListerner::class,
+            ChatEvent::class => [
+            ChatListerner::class,
         ],
     ];
 

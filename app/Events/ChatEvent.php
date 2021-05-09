@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers\App\Events;
+namespace App\Events;
 
 use App\Models\User;
 use Illuminate\Broadcasting\Channel;
@@ -14,7 +14,7 @@ use Illuminate\Queue\SerializesModels;
 class ChatEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-  public $message;
+  public  $message;
   public $user;
     /**
      * Create a new event instance.
@@ -23,9 +23,10 @@ class ChatEvent implements ShouldBroadcast
      */
     public function __construct($message,User $user)
     {
-        return $this->message = $message;
-        return $this->user= $user;
+     $this->message = $message;
+      $this->user= $user;
     }
+
 
     /**
      * Get the channels the event should broadcast on.
