@@ -9,6 +9,8 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('chat', [ChatController::class, 'index'])->name('chat');
-Route::get('send', [ChatController::class, 'send'])->name('send');
-
+Route::post('send', [ChatController::class, 'send'])->name('send');
+Route::get('check', function (){
+    return session(chat);
+});
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

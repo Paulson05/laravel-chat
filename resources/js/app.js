@@ -4,9 +4,10 @@ require('./bootstrap');
 
 window.Vue = require('vue').default;
 
+import Toasted from 'vue-toasted';
 
+Vue.use(Toasted)
 import VueChatScroll from 'vue-chat-scroll';
-
 Vue.use(VueChatScroll);
 
 
@@ -21,14 +22,52 @@ const app = new Vue({
     data:{
         message: '',
         chat:{
-            message: []
+            message: [],
+            user: [],
+            color: [],
+            time: []
+        },
+        // typing: '',
+        // numberOfUser:0
+    },
+
+    methods:{
+        send() {
+            if (this.message.length != 0) {
+                this.chat.message.push(this.message);
+                this.chat.color.push('secondary');
+                this.chat.user.push('you');
+                // this.chat.time.push(this.getTime());
+
+
+                axios.post('/send', {
+                    message: this.message,
+                    chat:this.chat
+                })
+                    .then(response => {
+                        console.log(response);
+                        this.message = ''
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+            }
         }
     },
-    methods:{
-        send(){
-            if(this.message.length != 0)
-           this.chat.message.push(this.message);
-            this.message = ''
-        }
+
+
+    mounted() {
+        Echo.private(`chat`)
+            .listen('ChatEvent', (e) => {
+                this.chat.message.push(e.message);
+                // this.chat.color.push('secondary');
+                this.chat.user.push(e.user);
+                // this.chat.time.push(this.getTime());
+                // console.log(e);
+            });
+
+
+
+
     }
 });

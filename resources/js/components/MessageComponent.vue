@@ -1,7 +1,7 @@
 <template>
   <div>
       <li class="list-group-item " :class=className><slot></slot></li>
-      <small class="badge badge-success float-right" >you</small>
+
   </div>
 </template>
 
@@ -9,7 +9,9 @@
     export default {
 
         props:[
-            'color'
+            'color',
+            'user'
+
         ],
         computed:{
             className() {
@@ -21,3 +23,9 @@
         }
     }
 </script>
+<style>
+#time{
+    color:red;
+
+}
+</style>
