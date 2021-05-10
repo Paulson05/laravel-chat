@@ -35,7 +35,7 @@ const app = new Vue({
         send() {
             if (this.message.length != 0) {
                 this.chat.message.push(this.message);
-                this.chat.color.push('secondary');
+                this.chat.color.push('danger');
                 this.chat.user.push('you');
                 // this.chat.time.push(this.getTime());
 
@@ -60,7 +60,7 @@ const app = new Vue({
         Echo.private(`chat`)
             .listen('ChatEvent', (e) => {
                 this.chat.message.push(e.message);
-                // this.chat.color.push('secondary');
+                this.chat.color.push('primary');
                 this.chat.user.push(e.user);
                 // this.chat.time.push(this.getTime());
                 // console.log(e);

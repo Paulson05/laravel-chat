@@ -1852,6 +1852,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['color', 'user'],
   computed: {
@@ -1905,7 +1906,7 @@ var app = new Vue({
 
       if (this.message.length != 0) {
         this.chat.message.push(this.message);
-        this.chat.color.push('secondary');
+        this.chat.color.push('danger');
         this.chat.user.push('you'); // this.chat.time.push(this.getTime());
 
         axios.post('/send', {
@@ -1924,8 +1925,9 @@ var app = new Vue({
     var _this2 = this;
 
     Echo["private"]("chat").listen('ChatEvent', function (e) {
-      _this2.chat.message.push(e.message); // this.chat.color.push('secondary');
+      _this2.chat.message.push(e.message);
 
+      _this2.chat.color.push('primary');
 
       _this2.chat.user.push(e.user); // this.chat.time.push(this.getTime());
       // console.log(e);
@@ -43709,7 +43711,11 @@ var render = function() {
       { staticClass: "list-group-item ", class: _vm.className },
       [_vm._t("default")],
       2
-    )
+    ),
+    _vm._v(" "),
+    _c("small", { staticClass: "badge badge-success float-right" }, [
+      _vm._v(_vm._s(_vm.user))
+    ])
   ])
 }
 var staticRenderFns = []
