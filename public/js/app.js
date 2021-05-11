@@ -1853,8 +1853,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['color', 'user'],
+  props: ['color', 'user', 'time'],
   computed: {
     className: function className() {
       return 'list-group-item-' + this.color;
@@ -1913,8 +1916,8 @@ var app = new Vue({
       if (this.message.length != 0) {
         this.chat.message.push(this.message);
         this.chat.color.push('danger');
-        this.chat.user.push('you'); // this.chat.time.push(this.getTime());
-
+        this.chat.user.push('you');
+        this.chat.time.push(this.getTime());
         axios.post('/send', {
           message: this.message,
           chat: this.chat
@@ -1925,6 +1928,10 @@ var app = new Vue({
           console.log(error);
         });
       }
+    },
+    getTime: function getTime() {
+      var time = new Date();
+      return time.getHours() + ':' + time.getMinutes();
     }
   },
   mounted: function mounted() {
@@ -1935,8 +1942,9 @@ var app = new Vue({
 
       _this2.chat.color.push('primary');
 
-      _this2.chat.user.push(e.user); // this.chat.time.push(this.getTime());
-      // console.log(e);
+      _this2.chat.user.push(e.user);
+
+      _this2.chat.time.push(_this2.getTime()); // console.log(e);
 
     }).listenForWhisper('typing', function (e) {
       if (e.name != '') {
@@ -6458,7 +6466,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#time{\n    color:red;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#time{\n    color:red;\n     font-size: 8px;\n    margin-top: 10px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -43723,7 +43731,11 @@ var render = function() {
     _c(
       "li",
       { staticClass: "list-group-item ", class: _vm.className },
-      [_vm._t("default")],
+      [
+        _vm._t("default"),
+        _vm._v(" "),
+        _c("span", { attrs: { id: "time" } }, [_vm._v(_vm._s(_vm.time))])
+      ],
       2
     ),
     _vm._v(" "),

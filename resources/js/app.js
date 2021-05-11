@@ -47,7 +47,7 @@ const app = new Vue({
                 this.chat.message.push(this.message);
                 this.chat.color.push('danger');
                 this.chat.user.push('you');
-                // this.chat.time.push(this.getTime());
+                this.chat.time.push(this.getTime());
 
 
                 axios.post('/send', {
@@ -62,6 +62,10 @@ const app = new Vue({
                         console.log(error);
                     });
             }
+        },
+        getTime(){
+            let time  = new Date();
+            return time.getHours()+':'+time.getMinutes();
         }
     },
 
@@ -72,7 +76,7 @@ const app = new Vue({
                 this.chat.message.push(e.message);
                 this.chat.color.push('primary');
                 this.chat.user.push(e.user);
-                // this.chat.time.push(this.getTime());
+                this.chat.time.push(this.getTime());
                 // console.log(e);
             })
             .listenForWhisper('typing', (e) => {
