@@ -1896,9 +1896,15 @@ var app = new Vue({
       user: [],
       color: [],
       time: []
-    } // typing: '',
-    // numberOfUser:0
-
+    },
+    typing: ''
+  },
+  watch: {
+    message: function message() {
+      Echo["private"]('chat').whisper('typing', {
+        name: this.message
+      });
+    }
   },
   methods: {
     send: function send() {
@@ -1932,6 +1938,14 @@ var app = new Vue({
       _this2.chat.user.push(e.user); // this.chat.time.push(this.getTime());
       // console.log(e);
 
+    }).listenForWhisper('typing', function (e) {
+      if (e.name != '') {
+        console.log('typing');
+        _this2.typing = 'typing ...';
+      } else {
+        console.log('');
+        _this2.typing = '';
+      }
     });
   }
 });
