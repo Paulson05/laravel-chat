@@ -1960,11 +1960,15 @@ var app = new Vue({
       _this2.numberOfUsers = users.length;
       console.log(users);
     }).joining(function (user) {
-      _this2.numberOfUsers += 1; // this.$toasted.show( user.name+' join chart group')
+      _this2.numberOfUsers += 1;
+
+      _this2.$toasted.error(user.name + ' join chart group');
 
       console.log(user.name);
     }).leaving(function (user) {
-      _this2.numberOfUsers -= 1; // this.$toasted.show(user.name+'leaving chat group')
+      _this2.numberOfUsers -= 1;
+
+      _this2.$toasted.success(user.name + 'leaving chat group');
 
       console.log(user.name);
     }).error(function (error) {

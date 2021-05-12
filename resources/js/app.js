@@ -33,6 +33,7 @@ const app = new Vue({
     },
 
 
+
     watch:{
         message(){
             Echo.private('chat')
@@ -101,13 +102,13 @@ const app = new Vue({
             })
             .joining((user) => {
                 this.numberOfUsers += 1;
-                // this.$toasted.show( user.name+' join chart group')
+                this.$toasted.error( user.name+ ' join chart group', )
 
                 console.log(user.name);
             })
             .leaving((user) => {
                 this.numberOfUsers -= 1;
-                // this.$toasted.show(user.name+'leaving chat group')
+                this.$toasted.success(user.name+'leaving chat group')
 
                 console.log(user.name);
             })

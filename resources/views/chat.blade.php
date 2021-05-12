@@ -43,6 +43,10 @@
 
             </div>
    </div>
-<script src="{{('js/app.js')}}"></script>
+   <!-- Insert the vue core before vue-toasted -->
+   <script src="https://unpkg.com/vue-toasted"></script>
+
+
+   <script src="{{('js/app.js')}}"></script>
 </body>
 </html>
