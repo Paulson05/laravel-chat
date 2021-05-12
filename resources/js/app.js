@@ -27,7 +27,8 @@ const app = new Vue({
             color: [],
             time: []
         },
-        typing: ''
+        typing: '',
+        numberOfUsers:0
 
     },
 
@@ -93,6 +94,26 @@ const app = new Vue({
 
 
 
+        Echo.join(`chat`)
+            .here((users) => {
+                this.numberOfUsers =users.length;
+                console.log(users);
+            })
+            .joining((user) => {
+                this.numberOfUsers += 1;
+                // this.$toasted.show( user.name+' join chart group')
+
+                console.log(user.name);
+            })
+            .leaving((user) => {
+                this.numberOfUsers -= 1;
+                // this.$toasted.show(user.name+'leaving chat group')
+
+                console.log(user.name);
+            })
+            .error((error) => {
+                console.error(error);
+            });
 
     }
 });

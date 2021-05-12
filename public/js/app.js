@@ -1900,7 +1900,8 @@ var app = new Vue({
       color: [],
       time: []
     },
-    typing: ''
+    typing: '',
+    numberOfUsers: 0
   },
   watch: {
     message: function message() {
@@ -1954,6 +1955,20 @@ var app = new Vue({
         console.log('');
         _this2.typing = '';
       }
+    });
+    Echo.join("chat").here(function (users) {
+      _this2.numberOfUsers = users.length;
+      console.log(users);
+    }).joining(function (user) {
+      _this2.numberOfUsers += 1; // this.$toasted.show( user.name+' join chart group')
+
+      console.log(user.name);
+    }).leaving(function (user) {
+      _this2.numberOfUsers -= 1; // this.$toasted.show(user.name+'leaving chat group')
+
+      console.log(user.name);
+    }).error(function (error) {
+      console.error(error);
     });
   }
 });
