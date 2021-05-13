@@ -36,7 +36,7 @@
                                 </message>
                             </ul>
                             <input type="text" class="form-control" placeholder="type your message here..." v-model = "message" @keyup.enter="send">
-
+                            <a href="" class="btn btn-warning btn-sm" @click.prevent="deleteSession">delete chat</a>
                         </div>
 
 

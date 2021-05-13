@@ -5,6 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <a href="{{route('chat')}}">start chat</a>
+           <p> <a href="{{route('sendemail')}}">send mail</a></p>
             <div class="card">
 
                 <div class="card-header">{{ __('Dashboard') }}</div>

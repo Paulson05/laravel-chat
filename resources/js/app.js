@@ -70,8 +70,27 @@ const app = new Vue({
             return time.getHours()+':'+time.getMinutes();
         }
     },
+     getOldMessages(){
+         axios.post('/getOldMessage')
+             .then(response => {
+                 console.log(response);
+                if(response.data != ''){
+                    this.chat = response.data;
+                }
+             })
+             .catch(error => {
+                 console.log(error);
+             });
+     },
+    deleteSession(){
+
+    //     axios.post('/deleteSession');
+    // .then(response =>            this.$toasted.error( user.name+ ' join chart group', )
+    //
+    //     );
 
 
+    },
     mounted() {
         Echo.private(`chat`)
             .listen('ChatEvent', (e) => {
@@ -80,6 +99,17 @@ const app = new Vue({
                 this.chat.user.push(e.user);
                 this.chat.time.push(this.getTime());
                 // console.log(e);
+
+                axios.post('/saveToSession',{
+                    message: this.message,
+                    chat : this.chat
+                })
+                    .then(response => {
+
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
             })
             .listenForWhisper('typing', (e) => {
                 if (e.name != ''){

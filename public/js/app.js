@@ -1935,40 +1935,65 @@ var app = new Vue({
       return time.getHours() + ':' + time.getMinutes();
     }
   },
-  mounted: function mounted() {
+  getOldMessages: function getOldMessages() {
     var _this2 = this;
 
+    axios.post('/getOldMessage').then(function (response) {
+      console.log(response);
+
+      if (response.data != '') {
+        _this2.chat = response.data;
+      }
+    })["catch"](function (error) {
+      console.log(error);
+    });
+  },
+  deleteSession: function deleteSession() {//     axios.post('/deleteSession');
+    // .then(response =>            this.$toasted.error( user.name+ ' join chart group', )
+    //
+    //     );
+  },
+  mounted: function mounted() {
+    var _this3 = this;
+
     Echo["private"]("chat").listen('ChatEvent', function (e) {
-      _this2.chat.message.push(e.message);
+      _this3.chat.message.push(e.message);
 
-      _this2.chat.color.push('primary');
+      _this3.chat.color.push('primary');
 
-      _this2.chat.user.push(e.user);
+      _this3.chat.user.push(e.user);
 
-      _this2.chat.time.push(_this2.getTime()); // console.log(e);
+      _this3.chat.time.push(_this3.getTime()); // console.log(e);
 
+
+      axios.post('/saveToSession', {
+        message: _this3.message,
+        chat: _this3.chat
+      }).then(function (response) {})["catch"](function (error) {
+        console.log(error);
+      });
     }).listenForWhisper('typing', function (e) {
       if (e.name != '') {
         console.log('typing');
-        _this2.typing = 'typing ...';
+        _this3.typing = 'typing ...';
       } else {
         console.log('');
-        _this2.typing = '';
+        _this3.typing = '';
       }
     });
     Echo.join("chat").here(function (users) {
-      _this2.numberOfUsers = users.length;
+      _this3.numberOfUsers = users.length;
       console.log(users);
     }).joining(function (user) {
-      _this2.numberOfUsers += 1;
+      _this3.numberOfUsers += 1;
 
-      _this2.$toasted.error(user.name + ' join chart group');
+      _this3.$toasted.error(user.name + ' join chart group');
 
       console.log(user.name);
     }).leaving(function (user) {
-      _this2.numberOfUsers -= 1;
+      _this3.numberOfUsers -= 1;
 
-      _this2.$toasted.success(user.name + 'leaving chat group');
+      _this3.$toasted.success(user.name + 'leaving chat group');
 
       console.log(user.name);
     }).error(function (error) {
