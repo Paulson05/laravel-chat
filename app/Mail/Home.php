@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -16,9 +17,10 @@ class Home extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public $array;
+    public function __construct($array)
     {
-        //
+        $this->array=$array;
     }
 
     /**
@@ -28,6 +30,6 @@ class Home extends Mailable
      */
     public function build()
     {
-        return $this->markdown('email.home');
+        return $this->markdown('email.home')->subject($this->array['subject']);
     }
 }

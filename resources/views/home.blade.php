@@ -4,8 +4,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <a href="{{route('chat')}}">start chat</a>
-           <p> <a href="{{route('sendemail')}}">send mail</a></p>
+            <a href="{{route('chat')}}" class="btn btn-success">start chat</a><br><br>
+
+           <p> <a href="{{route('sendemail')}}" class="btn btn-primary">send mail</a></p>
             <div class="card">
 
                 <div class="card-header">{{ __('Dashboard') }}</div>

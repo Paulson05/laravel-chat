@@ -18,6 +18,7 @@ Route::post('deleteSession', [ChatController::class, 'deleteSession'])->name('de
 Route::post('getOldMessage', [ChatController::class, 'getOldMessage'])->name('getOldMessage');
 
 Route::get('sendemail', [Mailcontroller::class, 'sendemail'])->name('sendemail');
+Route::post('postemail', [MailController::class, 'postemail'])->name('postemail');
 
 Route::get('check', function (){
     return session('chat');

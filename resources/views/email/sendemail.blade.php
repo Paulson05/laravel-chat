@@ -6,7 +6,7 @@
             <div class="col-sm-12">
 
                     <div class="col-sm-12">
-                        <form method="POST" action="">
+                        <form method="POST" action="{{route('postemail')}}">
                             @csrf
 
 
@@ -14,11 +14,11 @@
                                 <label for="email" class="">email</label>
 
 
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="type your email " >
 
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong></strong>
+                                        <strong>pls fill you email</strong>
                                     </span>
                                     @enderror
 
@@ -28,11 +28,11 @@
                                 <label for="password" class="">subject</label>
 
 
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                    <input type="text" class="form-control @error('subject') is-invalid @enderror" name="subject" placeholder="subject" >
 
-                                    @error('password')
+                                    @error('subject')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong></strong>
+                                        <strong>field can not be empty</strong>
                                     </span>
                                     @enderror
 
@@ -42,7 +42,12 @@
                                 <label for="password-confirm" class="">message</label>
 
 
-                                   <textarea class="form-control" rows=""></textarea>
+                                   <textarea  rows="5" cols="150" name="message" class="form-control @error('message') is-invalid @enderror" placeholder="type your message"></textarea>
+                                @error('message')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>message field is empty</strong>
+                            </span>
+                                @enderror
                                 </div>
 
 

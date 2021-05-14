@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0dc7318-d99f-42d4-8c5c-9a86d25485de" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/email/sendemail.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ChatController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ChatController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/chat.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/chat.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MailController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MailController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mail/Home.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/Home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/email/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/email/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/email/sendemail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/email/sendemail.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -173,7 +173,10 @@
       <workItem from="1620568716271" duration="1708000" />
       <workItem from="1620572236965" duration="13744000" />
       <workItem from="1620640915159" duration="9187000" />
-      <workItem from="1620822226012" duration="11964000" />
+      <workItem from="1620822226012" duration="26476000" />
+      <workItem from="1620976572453" duration="66000" />
+      <workItem from="1620977011452" duration="742000" />
+      <workItem from="1621006717037" duration="6297000" />
     </task>
     <servers />
   </component>
@@ -190,6 +193,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
